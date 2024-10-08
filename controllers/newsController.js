@@ -1,6 +1,5 @@
 import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
-import { upload } from '../middlewares/fileUpload.js';
 
 export const getNews = async (req, res) => {
   try {
