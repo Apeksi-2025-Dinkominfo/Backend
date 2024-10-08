@@ -147,6 +147,7 @@ model DataMunas {
   tanggal_kepulangan   DateTime
   lokasi_menginap      String
   jumlah_rombongan     Int
+  pesawat              String
   created_at           DateTime  @default(now())
   updated_at           DateTime  @updatedAt
 }
