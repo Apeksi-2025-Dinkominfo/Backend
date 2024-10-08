@@ -19,6 +19,7 @@ model News{
   location String
   date DateTime 
   body String
+  images String
 }
 
 model User {
