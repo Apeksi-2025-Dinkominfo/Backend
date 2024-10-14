@@ -3,6 +3,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import FormRoutes from "./routes/formRoutes.js"
 import NewsRoutes from "./routes/newsRoutes.js"
+import LoginRoutes from "./routes/loginRoutes.js"
 import path from 'path';
 import { fileURLToPath } from 'url';
 
@@ -18,6 +19,7 @@ app.use(cors());
 app.use(express.json());
 app.use(FormRoutes);
 app.use(NewsRoutes);
+app.use(LoginRoutes);
 
 app.listen(process.env.APP_PORT, () =>{
     console.log("Server Up and Running....");
