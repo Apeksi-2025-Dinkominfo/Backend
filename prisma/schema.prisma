@@ -1,9 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -13,155 +7,274 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model News{
-  id Int @id @default(autoincrement())
-  tittle String
-  location String
-  date DateTime 
-  body String @db.Text
-  images String
+model datamunas {
+  id                 Int                 @id @default(autoincrement())
+  asal_kota          datamunas_asal_kota
+  created_at         DateTime            @default(now())
+  jam_kedatangan     String
+  jumlah_rombongan   Int
+  lokasi_menginap    String
+  nama_ajudan        String
+  nama_walikota      String
+  nomor_handphone    String
+  tanggal_kedatangan DateTime
+  tanggal_kepulangan DateTime
+  updated_at         DateTime @default(now())
+  pesawat            String
 }
 
-model User {
-  id       String  @id @default(uuid())
+model news {
+  id       Int      @id @default(autoincrement())
+  tittle   String
+  location String
+  date     DateTime
+  body     String   @db.Text
+  images   String
+}
+
+model optd {
+  id                 Int            @id @default(autoincrement())
+  instansi           String
+  jabatan            String
+  nama_unit_kerja    String
+  nama_ajudan        String
+  nomor_handphone    String
+  tanggal_kedatangan DateTime
+  tanggal_kepulangan DateTime
+  lokasi_menginap    String
+  jumlah_rombongan   Int
+  pesawat            String
+  created_at         DateTime       @default(now())
+  updated_at         DateTime @default(now())
+  asal_kota          optd_asal_kota
+  jam_kedatangan     String
+  nama               String
+}
+
+model photo {
+  id         Int             @id @default(autoincrement())
+  url        String
+  photoType  photo_photoType
+  created_at DateTime        @default(now())
+  updated_at DateTime
+}
+
+model user {
+  id       String    @id
   name     String
   password String
-  role     Role    @default(user)
+  role     user_role @default(user)
 }
 
-enum Role {
-  user
-  admin
+enum datamunas_asal_kota {
+  Ambon
+  Balikpapan
+  Banda_Aceh
+  Bandar_Lampung
+  Bandung
+  Banjar
+  Banjarbaru
+  Banjarmasin
+  Batam
+  Batu
+  Baubau
+  Bekasi
+  Bengkulu
+  Bima
+  Binjai
+  Bitung
+  Blitar
+  Bogor
+  Bontang
+  Bukittinggi
+  Cilegon
+  Cimahi
+  Cirebon
+  Denpasar
+  Depok
+  Dumai
+  Gorontalo
+  Gunungsitoli
+  Jakarta_Barat
+  Jakarta_Pusat
+  Jakarta_Selatan
+  Jakarta_Timur
+  Jakarta_Utara
+  Jambi
+  Jayapura
+  Kediri
+  Kendari
+  Kotamobagu
+  Kupang
+  Langsa
+  Lhokseumawe
+  Lubuklinggau
+  Madiun
+  Magelang
+  Makassar
+  Malang
+  Manado
+  Mataram
+  Medan
+  Metro
+  Mojokerto
+  Padang
+  Padang_Panjang
+  Padangsidimpuan
+  Pagaralam
+  Palangka_Raya
+  Palembang
+  Palopo
+  Palu
+  Pangkalpinang
+  Parepare
+  Pariaman
+  Pasuruan
+  Payakumbuh
+  Pekalongan
+  Pekanbaru
+  Pematang_Siantar
+  Pontianak
+  Prabumulih
+  Probolinggo
+  Sabang
+  Salatiga
+  Samarinda
+  Sawahlunto
+  Semarang
+  Serang
+  Sibolga
+  Singkawang
+  Solok
+  Sorong
+  Subulussalam
+  Sukabumi
+  Sungaipenuh
+  Surabaya
+  Surakarta
+  Tangerang
+  Tangerang_Selatan
+  Tanjungbalai
+  Tanjungpinang
+  Tarakan
+  Tasikmalaya
+  Tebing_Tinggi
+  Tegal
+  Ternate
+  Tidore_Kepulauan
+  Tomohon
+  Tual
+  Yogyakarta
 }
 
-
-enum City {
-Ambon
-Balikpapan
-Banda_Aceh
-Bandar_Lampung
-Bandung
-Banjar
-Banjarbaru
-Banjarmasin
-Batam
-Batu
-Baubau
-Bekasi
-Bengkulu
-Bima
-Binjai
-Bitung
-Blitar
-Bogor
-Bontang
-Bukittinggi
-Cilegon
-Cimahi
-Cirebon
-Denpasar
-Depok
-Dumai
-Gorontalo
-Gunungsitoli
-Jakarta_Barat
-Jakarta_Pusat
-Jakarta_Selatan
-Jakarta_Timur
-Jakarta_Utara
-Jambi
-Jayapura
-Kediri
-Kendari
-Kotamobagu
-Kupang
-Langsa
-Lhokseumawe
-Lubuklinggau
-Madiun
-Magelang
-Makassar
-Malang
-Manado
-Mataram
-Medan
-Metro
-Mojokerto
-Padang
-Padang_Panjang
-Padangsidimpuan
-Pagaralam
-Palangka_Raya
-Palembang
-Palopo
-Palu
-Pangkalpinang
-Parepare
-Pariaman
-Pasuruan
-Payakumbuh
-Pekalongan
-Pekanbaru
-Pematang_Siantar
-Pontianak
-Prabumulih
-Probolinggo
-Sabang
-Salatiga
-Samarinda
-Sawahlunto
-Semarang
-Serang
-Sibolga
-Singkawang
-Solok
-Sorong
-Subulussalam
-Sukabumi
-Sungaipenuh
-Surabaya
-Surakarta
-Tangerang
-Tangerang_Selatan
-Tanjungbalai
-Tanjungpinang
-Tarakan
-Tasikmalaya
-Tebing_Tinggi
-Tegal
-Ternate
-Tidore_Kepulauan
-Tomohon
-Tual
-Yogyakarta
-}
-
-model DataMunas {
-  id                  Int       @id @default(autoincrement())
-  asal_kota            City
-  nama_walikota        String
-  nama_ajudan          String
-  nomor_handphone      String
-  tanggal_kedatangan   DateTime
-  jam_kedatangan       String
-  tanggal_kepulangan   DateTime
-  lokasi_menginap      String
-  jumlah_rombongan     Int
-  pesawat              String
-  created_at           DateTime  @default(now())
-  updated_at           DateTime  @updatedAt
-}
-
-enum PhotoType {
+enum photo_photoType {
   DAY
   VENUE
   EVENT
 }
 
-model Photo {
-  id        Int       @id @default(autoincrement())
-  url       String
-  photoType PhotoType
-  created_at DateTime  @default(now())
-  updated_at DateTime  @updatedAt
+enum user_role {
+  user
+  admin
+}
+
+enum optd_asal_kota {
+  Ambon
+  Balikpapan
+  Banda_Aceh
+  Bandar_Lampung
+  Bandung
+  Banjar
+  Banjarbaru
+  Banjarmasin
+  Batam
+  Batu
+  Baubau
+  Bekasi
+  Bengkulu
+  Bima
+  Binjai
+  Bitung
+  Blitar
+  Bogor
+  Bontang
+  Bukittinggi
+  Cilegon
+  Cimahi
+  Cirebon
+  Denpasar
+  Depok
+  Dumai
+  Gorontalo
+  Gunungsitoli
+  Jakarta_Barat
+  Jakarta_Pusat
+  Jakarta_Selatan
+  Jakarta_Timur
+  Jakarta_Utara
+  Jambi
+  Jayapura
+  Kediri
+  Kendari
+  Kotamobagu
+  Kupang
+  Langsa
+  Lhokseumawe
+  Lubuklinggau
+  Madiun
+  Magelang
+  Makassar
+  Malang
+  Manado
+  Mataram
+  Medan
+  Metro
+  Mojokerto
+  Padang
+  Padang_Panjang
+  Padangsidimpuan
+  Pagaralam
+  Palangka_Raya
+  Palembang
+  Palopo
+  Palu
+  Pangkalpinang
+  Parepare
+  Pariaman
+  Pasuruan
+  Payakumbuh
+  Pekalongan
+  Pekanbaru
+  Pematang_Siantar
+  Pontianak
+  Prabumulih
+  Probolinggo
+  Sabang
+  Salatiga
+  Samarinda
+  Sawahlunto
+  Semarang
+  Serang
+  Sibolga
+  Singkawang
+  Solok
+  Sorong
+  Subulussalam
+  Sukabumi
+  Sungaipenuh
+  Surabaya
+  Surakarta
+  Tangerang
+  Tangerang_Selatan
+  Tanjungbalai
+  Tanjungpinang
+  Tarakan
+  Tasikmalaya
+  Tebing_Tinggi
+  Tegal
+  Ternate
+  Tidore_Kepulauan
+  Tomohon
+  Tual
+  Yogyakarta
 }
