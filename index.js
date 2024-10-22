@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import FormRoutes from "./routes/formRoutes.js"
 import NewsRoutes from "./routes/newsRoutes.js"
 import LoginRoutes from "./routes/loginRoutes.js"
+import GambarRoutes from "./routes/pictureRoutes.js"
 import OptdRoutes from "./routes/optdRoutes.js"
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -21,6 +22,7 @@ app.use(express.json());
 app.use(FormRoutes);
 app.use(NewsRoutes);
 app.use(LoginRoutes);
+app.use(GambarRoutes);
 app.use(OptdRoutes);
 
 app.listen(process.env.APP_PORT, () =>{
