@@ -20,7 +20,9 @@ model datamunas {
   tanggal_kedatangan DateTime
   tanggal_kepulangan DateTime
   updated_at         DateTime @default(now())
-  pesawat            String
+  transportasi            String
+  ukuran_baju_ibuk   String
+  ukuran_baju_bapak  String
 }
 
 model news {
@@ -43,12 +45,14 @@ model optd {
   tanggal_kepulangan DateTime
   lokasi_menginap    String
   jumlah_rombongan   Int
-  pesawat            String
+  transportasi            String
   created_at         DateTime       @default(now())
   updated_at         DateTime @default(now())
   asal_kota          optd_asal_kota
   jam_kedatangan     String
   nama               String
+  ukuran_baju_ibuk   String
+  ukuran_baju_bapak  String
 }
 
 model photo {
