@@ -53,6 +53,7 @@ model optd {
   nama               String
   ukuran_baju_ibuk   String
   ukuran_baju_bapak  String
+  EventParticipation String
 }
 
 model photo {
