@@ -61,7 +61,7 @@ model photo {
   url        String
   photoType  photo_photoType
   created_at DateTime        @default(now())
-  updated_at DateTime
+  updated_at DateTime        @default(now())
 }
 
 model user {
