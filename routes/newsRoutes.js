@@ -6,13 +6,14 @@ import {
   updateNews,
   deleteNews,
 } from '../controllers/newsController.js';
-import { upload } from '../middlewares/fileUpload.js';
+import { uploadSingle } from '../middlewares/fileUpload.js';
+
 const router = express.Router();
 
 router.get('/news', getNews);
 router.get('/news/:id', getNewsById);
-router.post('/news', upload.single('images'), createNews);
-router.patch('/news/:id', upload.single('images'), updateNews);
+router.post('/news', uploadSingle, createNews); // Upload satu file
+router.patch('/news/:id', uploadSingle, updateNews); // Upload satu file
 router.delete('/news/:id', deleteNews);
 
 export default router;
