@@ -10,6 +10,7 @@ datasource db {
 model datamunas {
   id                 Int                 @id @default(autoincrement())
   asal_kota          datamunas_asal_kota
+  jabatan            String
   created_at         DateTime            @default(now())
   jam_kedatangan     String
   jumlah_rombongan   Int
